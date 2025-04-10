@@ -1,0 +1,144 @@
+/* Movies Page Styles */
+.movies-list {
+    padding: 50px;
+    text-align: center;
+}
+
+.movies-list h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Filter Section */
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filters select,
+.filters button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+.filters select {
+    background: #333;
+    color: #fff;
+}
+
+.filters button {
+    background: #e50914;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filters button:hover {
+    background: #ff0a16;
+}
+
+/* Movie Grid */
+.movie-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.movie-card {
+    background: #222;
+    border-radius: 10px;
+    width: 250px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.movie-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: white;
+}
+
+.movie-card p {
+    font-size: 14px;
+    color: #ccc;
+    margin: 5px 0;
+}
+
+.movie-card .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background: #e50914;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.movie-card .btn:hover {
+    background: #ff0a16;
+    box-shadow: 0px 0px 10px #e50914;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filters form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-card {
+        width: 90%;
+    }
+    .movie-poster {
+        height: 300px; /* Set a fixed height */
+        object-fit: cover; /* Ensures the image maintains aspect ratio */
+        border-radius: 10px; /* Optional: Makes the corners rounded */
+    }
+    .offer-container {
+        width: 50%;
+        background: linear-gradient(135deg, #ffcc00, #ff9900);
+        color: black;
+        padding: 15px;
+        margin: auto;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    }
+    .promo-code {
+        background: black;
+        color: yellow;
+        padding: 5px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    
+}

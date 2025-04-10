@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection - TikShow</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your existing CSS styles */
+        .seat-selection {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .seat-map {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .seat {
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .seat.selected {
+            background-color: red;
+        }
+
+        .seat.booked {
+            background-color: black;
+            cursor: not-allowed;
+        }
+
+        .confirm-btn {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">TikShow</div>
+        <nav>
+            <ul>
+                <li><a href="test.html">Home</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Concerts</a></li>
+                <li><a href="#">Theatres</a></li>
+            </ul>
+        </nav>
+        
+        <div class="buttons">
+            <button class="sign-up-btn" id="signUpBtn" onclick="redirectToSignUp()">Sign Up</button>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown" id="menuDropdown">
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+            <a href="#">Subscription</a>
+            <a href="#" onclick="confirmLogout()">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="seat-selection">
+            <h1>Select Your Seats</h1>
+            <div class="seat-map" id="seatMap">
+                <!-- Seats will be generated here -->
+            </div>
+            <button class="confirm-btn" onclick="confirmBooking()">Confirm Booking</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright 2025 &copy; TikShow Pvt. Ltd.</p>
+        <div class="social-icons">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+        </div>
+    </footer>
+
+    <script>
+        const seatMap = document.getElementById('seatMap');
+        const selectedSeats = [];
+
+        // Generate seats
+        for (let i = 1; i <= 100; i++) {
+            const seat = document.createElement('div');
+            seat.classList.add('seat');
+            seat.textContent = i;
+            seat.addEventListener('click', () => selectSeat(seat));
+            seatMap.appendChild(seat);
+        }
+
+        function selectSeat(seat) {
+            if (seat.classList.contains('booked')) {
+                return;
+            }
+            seat.classList.toggle('selected');
+            const seatNumber = seat.textContent;
+            if (selectedSeats.includes(seatNumber)) {
+                selectedSeats.splice(selectedSeats.indexOf(seatNumber), 1);
+            } else {
+                selectedSeats.push(seatNumber);
+            }
+        }
+
+        function confirmBooking() {
+            if (selectedSeats.length === 0) {
+                alert("Please select at least one seat.");
+                return;
+            }
+            alert(`You have booked seats: ${selectedSeats.join(', ')}`);
+            window.location.href = "test.html";
+        }
+
+        // Check if user is logged in
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (isLoggedIn) {
+            document.getElementById('signUpBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
